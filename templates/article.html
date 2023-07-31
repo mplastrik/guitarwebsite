@@ -2,11 +2,14 @@
 
 {% block body %}
 
-  <h1 class="text-center">{{articles[articleId - 1].title}}</h1>
+  <h1 class="text-center" id="article-title">{{article.title}}</h1>
+  {% for image in article.images %}
+  <img src="{{ url_for('static', filename='{{image}}') }}" />
+  {% endfor %}
 
-  <p> {{articles[articleId-1].body}} </p>
-
-  <h2> {{articles[articleId-1].author}} </h2>
-  <h2> {{articles[articleId - 1].date_created}}</h2>
-  
+  <p> {{article.body}} </p>
+  <div>
+    <p>Written by: {{article.author}}</p>
+    <p>Date Posted: {{article.date_created}}</p>
+  </div>
 {% endblock %}
